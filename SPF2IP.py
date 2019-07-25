@@ -16,6 +16,7 @@ def dns_request_unicode(hostname,record_type,*args,**kwargs):
   try:
     result = dns.resolver.query(hostname,record_type,*args,**kwargs)
   except (dns.resolver.NoAnswer,dns.resolver.NXDOMAIN):
+    print("FAIL: ", hostname, record_type)
     return output
   for entry in result:
     if record_type == "A":
